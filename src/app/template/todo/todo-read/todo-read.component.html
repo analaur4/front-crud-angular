@@ -5,8 +5,8 @@
         </div>
 
         <div class="filter">
-            <input type="text" placeholder="Pesquisar por matéria">
-            <button><i class="material-icons">search</i></button>
+            <input type="text" (keydown.enter)="searchMateria()" [(ngModel)]="listMaterias" placeholder="Pesquisar por matéria">
+            <button (click)="searchMateria()"><i class="material-icons">search</i></button>
         </div>
     </div>
 
@@ -21,14 +21,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of listItems">
+            <tr *ngFor="let item of listItems; let i = index ">
                 <td>{{item.materia}}</td>
                 <td>{{item.tarefa}}</td>
                 <td>{{item.dtEntrega | date: 'dd/MM/yyyy'}}</td>
-                <td><input type="checkbox" name="status" id="idStatus" value="{{item.status}}"></td>
+                <td>{{item.status ? 'Feito' : 'P/ fazer'}}</td>
                 <td>
                     <a routerLink="/todo/update/{{ item.id }}"><i class="material-icons">edit</i></a>
-                    <i (click)="deleteToDo()" class="material-icons">delete</i>
+                    <i (click)="deleteToDo(item.id)" class="material-icons">delete</i>
                 </td>
             </tr>
         </tbody>

@@ -28,6 +28,7 @@ form {
     flex-direction: column;
     height: 60px;
     justify-content: space-between;
+    margin-bottom: 15px;
     width: 50%;
 }
 
@@ -47,6 +48,10 @@ form {
 
 .form-input input:focus {
     border-bottom: 1px solid #F411A8;
+}
+
+.form-input input[type="checkbox"] {
+    width: auto;
 }
 
 .buttons {

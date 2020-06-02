@@ -1,21 +1,26 @@
 <div class="content">
 
-    <h1>• Editar tarefa <b>{{item.tarefa}}</b> •</h1>
+    <h1>• Editar tarefa •</h1>
 
     <form>
         <div class="form-input">
             <label for="materia">Matéria:</label>
-            <input type="text" name="materia" id="idMateria" [(ngModel)]="item.materia">
+            <input type="text" name="materia" id="idMateria" [(ngModel)]="listItem.materia">
         </div>
 
         <div class="form-input">
             <label for="tarefa">Tarefa:</label>
-            <input type="text" name="tarefa" id="idTarefa" [(ngModel)]="item.tarefa">
+            <input type="text" name="tarefa" id="idTarefa" [(ngModel)]="listItem.tarefa">
         </div>
         
         <div class="form-input">
             <label for="dtEntrega">Data de Entrega:</label>
-            <input type="date" name="dtEntrega" id="idDtEntrega" [(ngModel)]="item.dtEntrega">
+            <input type="date" name="dtEntrega" id="idDtEntrega" [(ngModel)]="listItem.dtEntrega">
+        </div>
+        
+        <div class="form-input">
+            <label for="status">Status:</label>
+            <input type="checkbox" name="status" id="idStatus" [(ngModel)]="listItem.status" [checked]="listItem.status">
         </div>
 
         <div class="buttons">

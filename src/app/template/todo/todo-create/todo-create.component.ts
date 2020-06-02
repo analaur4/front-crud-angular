@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from 'src/app/models/item.model';
 import { Router } from '@angular/router';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-todo-create',
@@ -16,13 +17,15 @@ export class TodoCreateComponent implements OnInit {
     status: null
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private itemService: ItemService) { }
 
   ngOnInit(): void {
   }
 
   createToDo() {
-    console.log(this.item);
+    this.itemService.createItem(this.item).subscribe(() => {
+      console.log(this.item);
+    })
     this.router.navigate(['/todo']);
   }
 

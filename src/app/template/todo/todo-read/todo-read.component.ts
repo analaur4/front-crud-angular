@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Item } from 'src/app/models/item.model';
 import { ItemService } from 'src/app/services/item.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-todo-read',
@@ -9,9 +10,10 @@ import { ItemService } from 'src/app/services/item.service';
 })
 export class TodoReadComponent implements OnInit {
 
-  listItems: Item[];
+  listItems: Item;
+  listMaterias: string;
 
-  constructor(private itemService: ItemService) { }
+  constructor(private itemService: ItemService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.readItems();
@@ -23,7 +25,18 @@ export class TodoReadComponent implements OnInit {
     })
   }
 
-  deleteToDo() {
-    console.log(this.listItems);
+  searchMateria() {
+    this.itemService.getItemMateria(this.listMaterias).subscribe(items => {
+      this.listItems = items;
+    }, respError => {
+      console.log('Nenhuma matéria encontrada')
+    })
+  }
+
+  deleteToDo(id: number) {
+    this.itemService.deleteItem(id).subscribe(() => {
+      console.log(`Item ${id} excluído!`);
+    })
+    location.reload();
   }
 }

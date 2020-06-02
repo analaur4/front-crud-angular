@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from 'src/app/models/item.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-todo-update',
@@ -9,15 +10,21 @@ import { Router } from '@angular/router';
 })
 export class TodoUpdateComponent implements OnInit {
 
-  item: Item;
+  listItem: Item;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private itemService: ItemService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.itemService.getItem(id).subscribe(item => {
+      this.listItem = item;
+    })
   }
 
   updateToDo() {
-    console.log(this.item);
+    this.itemService.updateItem(this.listItem).subscribe(() => {
+      console.log(`Item atualizado!`);
+    })
     this.router.navigate(['/todo']);
   }
 
