@@ -7,8 +7,7 @@ import { Item } from '../models/item.model';
 })
 export class ItemService {
 
-  // baseUrl: string = 'http://localhost:8080/api/Item';
-  baseUrl: string = 'http://localhost:3001/todo';
+  baseUrl: string = 'http://localhost:8080/api/Item';
 
   constructor(private http: HttpClient) { }
 
