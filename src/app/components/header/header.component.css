@@ -1,0 +1,13 @@
+.content {
+    align-items: center;
+    background-color: #b7afaf69;
+    box-shadow: 5px 5px 10px #00000069;
+    display: flex;
+    height: 15vh;
+    width: 100%;
+}
+
+img {
+    margin: 0 150px 0 15px;
+    width: 110px;
+}

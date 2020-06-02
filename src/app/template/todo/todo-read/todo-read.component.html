@@ -1,0 +1,36 @@
+<div class="content">
+    <div class="top-page">
+        <div class="new-todo">
+            <a routerLink="/todo/create">+ Adicionar nova tarefa</a>
+        </div>
+
+        <div class="filter">
+            <input type="text" placeholder="Pesquisar por matéria">
+            <button><i class="material-icons">search</i></button>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Matéria</th>
+                <th>Tarefa</th>
+                <th>Data de Entrega</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listItems">
+                <td>{{item.materia}}</td>
+                <td>{{item.tarefa}}</td>
+                <td>{{item.dtEntrega | date: 'dd/MM/yyyy'}}</td>
+                <td><input type="checkbox" name="status" id="idStatus" value="{{item.status}}"></td>
+                <td>
+                    <a routerLink="/todo/update/{{ item.id }}"><i class="material-icons">edit</i></a>
+                    <i (click)="deleteToDo()" class="material-icons">delete</i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

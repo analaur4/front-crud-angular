@@ -1,0 +1,74 @@
+.content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80vw;
+}
+
+.content h1 {
+    padding: 20px;
+    box-shadow: 0px 2px 5px #00000069;
+    color: #c50593;
+    text-align: center;
+    width: 66%;
+}
+
+.apresentation {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 70%;
+}
+
+.explication {
+    font-size: 13pt;
+    margin-bottom: 20px;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    box-shadow: 0px 2px 5px #00000069;
+    border-radius: 5px;
+    width: 45%;
+}
+
+.card h3 {
+    color: #c50593;
+    text-transform: uppercase;
+}
+
+.language {
+    align-items: center;
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.autor {
+    align-items: flex-start;
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.autor p {
+    font-size: 12pt;
+    margin: 0;
+    padding: 0;
+    text-align: initial;
+}
+
+.autor span {
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.card img {
+    border-radius: 100%;
+    margin: 0 10px;
+    width: 50px;
+}

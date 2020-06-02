@@ -1,0 +1,27 @@
+<div class="content">
+
+    <h1>• Criar nova tarefa •</h1>
+
+    <form>
+        <div class="form-input">
+            <label for="materia">Matéria:</label>
+            <input type="text" name="materia" id="idMateria" [(ngModel)]="item.materia">
+        </div>
+
+        <div class="form-input">
+            <label for="tarefa">Tarefa:</label>
+            <input type="text" name="tarefa" id="idTarefa" [(ngModel)]="item.tarefa">
+        </div>
+        
+        <div class="form-input">
+            <label for="dtEntrega">Data de Entrega:</label>
+            <input type="date" name="dtEntrega" id="idDtEntrega" [(ngModel)]="item.dtEntrega">
+        </div>
+
+        <div class="buttons">
+            <button class="btn-save" (click)="createToDo()">Salvar</button>
+            <button class="btn-cancel" (click)="cancel()">Cancelar</button>
+        </div>
+    </form>
+
+</div>

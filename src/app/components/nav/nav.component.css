@@ -1,0 +1,34 @@
+.content {
+    display: flex;
+}
+
+nav {
+    background-color: #F411A8;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: 20vw;
+}
+
+.menu {
+    font-size: 14pt;
+    font-weight: bold;
+    padding: 10px 0 10px 15px;
+    width: 90%;
+}
+
+.menu a {
+    align-items: center;
+    color: #fff;
+    display: flex;
+    text-decoration: none;
+}
+
+.menu i {
+    margin-right: 10px;
+}
+
+.is-select {
+    background-color: rgb(234, 96, 188);
+    width: 94.5%;
+}

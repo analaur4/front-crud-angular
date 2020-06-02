@@ -1,0 +1,19 @@
+<div class="content">
+    <nav>
+        <div [ngClass]="activeHome ? 'menu is-select' : 'menu'">
+            <a routerLink="/home" (click)="navegaHome()">
+                <i class="material-icons">home</i>
+                Home
+            </a>
+        </div>
+    
+        <div [ngClass]="activeList ? 'menu is-select' : 'menu'">
+            <a routerLink="/todo" (click)="navegaList()">
+                <i class="material-icons">list</i>
+                Tarefas
+            </a>
+        </div>    
+    </nav>
+    
+    <router-outlet></router-outlet>
+</div>

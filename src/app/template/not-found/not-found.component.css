@@ -1,0 +1,16 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    width: 80vw;
+}
+
+h1 {
+    color: #c50593;
+    margin-left: 20px;
+}
+
+p {
+    color: #868585;
+    margin-left: 20px;
+}
