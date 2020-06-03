@@ -23,7 +23,9 @@ export class TodoUpdateComponent implements OnInit {
 
   updateToDo() {
     this.itemService.updateItem(this.listItem).subscribe(() => {
-      console.log(`Item atualizado!`);
+      this.itemService.showMessage(`Item ${this.listItem.tarefa} atualizado!`)
+    }, respError => {
+      this.itemService.showMessage(`Erro na atualização do item ${this.listItem.tarefa}`, true)
     })
     this.router.navigate(['/todo']);
   }

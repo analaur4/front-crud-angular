@@ -10,21 +10,19 @@ import { ItemService } from 'src/app/services/item.service';
 })
 export class TodoCreateComponent implements OnInit {
 
-  item: Item = {
-    materia: '',
-    tarefa: '',
-    dtEntrega: null,
-    status: null
-  }
+  item: Item = new Item();
 
   constructor(private router: Router, private itemService: ItemService) { }
 
   ngOnInit(): void {
   }
 
-  createToDo() {
-    this.itemService.createItem(this.item).subscribe(() => {
-      console.log(this.item);
+  createToDo(): void {
+    this.itemService.createItem(this.item).subscribe(data => {
+      this.item = data;
+      this.itemService.showMessage('Item criado com sucesso!')
+    }, respError => {
+      this.itemService.showMessage('Erro na criação do item', true)
     })
     this.router.navigate(['/todo']);
   }

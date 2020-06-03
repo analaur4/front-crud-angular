@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TodoReadComponent implements OnInit {
 
-  listItems: Item;
+  listItems: Item[];
   listMaterias: string;
 
   constructor(private itemService: ItemService, private route: ActivatedRoute) { }
@@ -35,7 +35,10 @@ export class TodoReadComponent implements OnInit {
 
   deleteToDo(id: number) {
     this.itemService.deleteItem(id).subscribe(() => {
-      console.log(`Item ${id} excluído!`);
+      this.listItems.slice(id, 1);
+      this.itemService.showMessage('Item deletado com sucesso!');
+    }, respError => {
+      this.itemService.showMessage(`Erro ao excluir item`, true)
     })
     location.reload();
   }
