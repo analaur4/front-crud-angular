@@ -82,6 +82,14 @@ table tbody td {
     color: #868585;
 }
 
+table tbody tr td:nth-child(2) {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 220px;
+    white-space: nowrap;
+}
+
 table tbody td input {
     cursor: pointer;
 }

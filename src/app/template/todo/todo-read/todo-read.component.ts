@@ -12,6 +12,7 @@ export class TodoReadComponent implements OnInit {
 
   listItems: Item[];
   listMaterias: string;
+  result: boolean = false;
 
   constructor(private itemService: ItemService, private route: ActivatedRoute) { }
 
@@ -22,14 +23,26 @@ export class TodoReadComponent implements OnInit {
   private readItems() {
     this.itemService.getItems().subscribe(items => {
       this.listItems = items;
+      if (items == null) {
+        this.result = true;
+      } else {
+        this.result = false;
+      }
+    }, respError => {
+      console.log(respError);
     })
   }
 
   searchMateria() {
     this.itemService.getItemMateria(this.listMaterias).subscribe(items => {
       this.listItems = items;
+      if (items == null) {
+        this.result = true;
+      } else {
+        this.result = false;
+      }
     }, respError => {
-      console.log('Nenhuma matéria encontrada')
+      console.log(respError)
     })
   }
 

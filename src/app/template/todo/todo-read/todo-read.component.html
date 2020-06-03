@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <table>
+    <table *ngIf="!result">
         <thead>
             <tr>
                 <th>Matéria</th>
@@ -33,4 +33,6 @@
             </tr>
         </tbody>
     </table>
+
+    <span *ngIf="result">Nenhum resultado encontrado</span>
 </div>
