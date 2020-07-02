@@ -7,6 +7,20 @@
     overflow-y: scroll;
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    border-radius: 15px 0 0 15px;
+    box-shadow: inset 0 0 6px rgb(244, 17, 168); 
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 15px 0 0 15px;
+    box-shadow: inset 0 0 6px rgb(244, 17, 168); 
+}
+
 .top-page {
     align-items: center;
     display: flex;
