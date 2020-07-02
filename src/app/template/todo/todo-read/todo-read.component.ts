@@ -14,6 +14,8 @@ export class TodoReadComponent implements OnInit {
   listMaterias: string;
   result: boolean = false;
 
+  itemRemovido: Item;
+
   constructor(private itemService: ItemService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -42,17 +44,17 @@ export class TodoReadComponent implements OnInit {
         this.result = false;
       }
     }, respError => {
-      console.log(respError)
+      console.log(respError.status)
     })
   }
 
-  deleteToDo(id: number) {
-    this.itemService.deleteItem(id).subscribe(() => {
-      this.listItems.slice(id, 1);
+  deleteToDo(itemRmv: Item) {
+    this.itemRemovido = itemRmv;
+    this.itemService.deleteItem(this.itemRemovido.id).subscribe(() => {
       this.itemService.showMessage('Item deletado com sucesso!');
+      this.listItems = this.listItems.filter(item => item !== this.itemRemovido)
     }, respError => {
       this.itemService.showMessage(`Erro ao excluir item`, true)
     })
-    location.reload();
   }
 }

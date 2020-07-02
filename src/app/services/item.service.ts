@@ -12,13 +12,16 @@ export class ItemService {
 
   baseUrl: string = 'https://apirest-todolist.herokuapp.com/api/item';
 
-  constructor(private http: HttpClient, private snackBar: MatSnackBar) { }
-
   httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json'
-    }),
-  };
+    headers: new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'responseType': 'text',
+      'Accept': '*/*',
+      'Access-Control-Allow-Origin': '*'
+    })
+  }
+
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) { }
 
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
@@ -34,35 +37,38 @@ export class ItemService {
     return EMPTY;
   }
 
-  getItems():Observable<Item[]> {
+  getItems(): Observable<Item[]> {
     return this.http.get<Item[]>(this.baseUrl, this.httpOptions).pipe(
       map(obj => obj)
     );
   }
 
-  getItem(id: number):Observable<Item> {
-    return this.http.get<Item>(`${this.baseUrl}/id/${id}`,this.httpOptions);
+  getItem(id: number): Observable<Item> {
+    return this.http.get<Item>(`${this.baseUrl}/id/${id}`, this.httpOptions);
   }
 
-  updateItem(item: Item):Observable<Item> {
-    return this.http.put<Item>(this.baseUrl, item, this.httpOptions);
+  updateItem(item: Item): Observable<Item> {
+    return this.http.put<Item>(`${this.baseUrl}/id/${item.id}`, item, this.httpOptions).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandler(e))
+    )
   }
 
-  createItem(item: Item):Observable<Item> {
-    return this.http.post<Item>(this.baseUrl, item, this.httpOptions).pipe(
+  createItem(item: Item): Observable<Item> {
+    let objToSave = JSON.stringify(item);
+    return this.http.post<Item>(this.baseUrl, objToSave, this.httpOptions).pipe(
+      map(obj => obj)
+    );
+  }
+
+  deleteItem(id: number): Observable<Item> {
+    return this.http.delete<Item>(`${this.baseUrl}/id/${id}`, this.httpOptions).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     );
   }
 
-  deleteItem(id: number):Observable<Item> {
-    return this.http.delete<Item>(`${this.baseUrl}/${id}`, this.httpOptions).pipe(
-      map(obj => obj),
-      catchError(e => this.errorHandler(e))
-    );
-  }
-
-  getItemMateria(mat: string):Observable<Item[]> {
+  getItemMateria(mat: string): Observable<Item[]> {
     return this.http.get<Item[]>(`${this.baseUrl}/mat/${mat}`, this.httpOptions)
   }
 }

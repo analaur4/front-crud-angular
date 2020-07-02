@@ -3,6 +3,8 @@
     display: flex;
     flex-direction: column;
     width: 80vw;
+    height: 100%;
+    overflow-y: scroll;
 }
 
 .top-page {

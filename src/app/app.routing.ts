@@ -8,6 +8,10 @@ import { TodoUpdateComponent } from './template/todo/todo-update/todo-update.com
 
 const routes: Routes = [
     {
+        path: "",
+        component: HomeComponent
+    },
+    {
         path: "home",
         component: HomeComponent
     },

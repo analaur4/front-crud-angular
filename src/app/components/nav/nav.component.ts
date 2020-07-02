@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -11,7 +12,7 @@ export class NavComponent implements OnInit {
   activeList: boolean = false;
   href: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.href = window.location.href;
@@ -21,21 +22,23 @@ export class NavComponent implements OnInit {
   navegaHome() {
     this.activeHome = true;
     this.activeList = false;
+
+    this.router.navigate(['/home']);
   }
 
   navegaList() {
     this.activeHome = false;
     this.activeList = true;
+
+    this.router.navigate(['/todo']);
   }
 
   private setMenu(href: string) {
-    if(href.includes('home')) {
-      this.activeHome = true;
-      this.activeList = false;
-    }
-    else if(href.includes('todo')) {
-      this.activeHome = false;
-      this.activeList = true;
+    if(href.includes('home') || href.includes('')) {
+      this.navegaHome();
+
+    } else if(href.includes('todo')) {
+      this.navegaList();
     }
   }
 

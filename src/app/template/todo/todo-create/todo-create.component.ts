@@ -18,13 +18,15 @@ export class TodoCreateComponent implements OnInit {
   }
 
   createToDo(): void {
-    this.itemService.createItem(this.item).subscribe(data => {
-      this.item = data;
+    this.itemService.createItem(this.item).subscribe(() => {
+      console.log(this.item )
       this.itemService.showMessage('Item criado com sucesso!')
+      this.router.navigate(['/todo']);
     }, respError => {
-      this.itemService.showMessage('Erro na criação do item', true)
+      this.itemService.showMessage('Erro na criação', true)
+      console.log(respError);
+      console.log(this.item)
     })
-    this.router.navigate(['/todo']);
   }
 
   cancel() {
