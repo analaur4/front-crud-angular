@@ -5,7 +5,7 @@
         </div>
 
         <div class="filter">
-            <input type="text" (keydown.enter)="searchMateria()" [(ngModel)]="listMaterias" placeholder="Pesquisar por matéria">
+            <input type="text" (keyup)="searchMateria()" [(ngModel)]="listMaterias" placeholder="Pesquisar por matéria">
             <button (click)="searchMateria()"><i class="material-icons">search</i></button>
         </div>
     </div>

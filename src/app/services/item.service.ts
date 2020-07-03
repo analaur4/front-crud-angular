@@ -68,7 +68,4 @@ export class ItemService {
     );
   }
 
-  getItemMateria(mat: string): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.baseUrl}/mat/${mat}`, this.httpOptions)
-  }
 }

@@ -36,16 +36,26 @@ export class TodoReadComponent implements OnInit {
   }
 
   searchMateria() {
-    this.itemService.getItemMateria(this.listMaterias).subscribe(items => {
-      this.listItems = items;
-      if (items == null) {
-        this.result = true;
+    let search = this.listMaterias;
+
+    if (search == '') {
+      this.readItems();
+    } else {
+      if (!search) {
+        return;
       } else {
-        this.result = false;
+        search = search.toLowerCase();
       }
-    }, respError => {
-      console.log(respError.status)
-    })
+
+      this.listItems = this.listItems.filter(e => 
+        e.materia.toLowerCase().indexOf(search) != -1
+      );
+
+      if(this.listItems.length == 0) {
+        this.result = true;
+      }
+      
+    }
   }
 
   deleteToDo(itemRmv: Item) {
