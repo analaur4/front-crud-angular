@@ -50,6 +50,7 @@
 }
 
 .filter input {
+    background: transparent;
     border: none;
     border-bottom: 1px solid #F411A8;
     color: #868585;
