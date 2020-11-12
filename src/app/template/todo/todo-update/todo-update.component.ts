@@ -15,20 +15,13 @@ export class TodoUpdateComponent implements OnInit {
   formUpdate: FormGroup;
   submitted: boolean = false;
 
+  showLoading: boolean = false;
+
   constructor(private router: Router, private itemService: ItemService, private route: ActivatedRoute, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.itemService.getItem(id).subscribe(item => {
-      this.getValuesFormUpdate(item);
-    });
-  }
+    this.showLoading = !this.showLoading;
 
-  get formUpdateControls() {
-    return this.formUpdate.controls;
-  }
-
-  getValuesFormUpdate(item: Item): void {
     this.formUpdate = this.formBuilder.group({
       id: [''],
       materia: ['', Validators.required],
@@ -36,7 +29,21 @@ export class TodoUpdateComponent implements OnInit {
       dtEntrega: ['', Validators.required],
       status: ['']
     });
+    
+    if(this.formUpdate) {
+      const id = +this.route.snapshot.paramMap.get('id');
+      this.itemService.getItem(id).subscribe(item => {
+        this.showLoading = !this.showLoading;
+        this.getValuesFormUpdate(item);
+      });
+    }
+  }
 
+  get formUpdateControls() {
+    return this.formUpdate.controls;
+  }
+
+  getValuesFormUpdate(item: Item): void {
     this.formUpdate.patchValue({
       id: item.id,
       materia: item.materia,
@@ -51,10 +58,12 @@ export class TodoUpdateComponent implements OnInit {
 
     if(this.formUpdate.valid) {
       this.itemService.updateItem(this.formUpdate.value).subscribe(() => {
+        this.showLoading = !this.showLoading;
         this.itemService.showMessage(`Item '${this.formUpdateControls.tarefa.value}' atualizado!`)
         this.router.navigate(['/todo']);
         
       }, respError => {
+        this.showLoading = !this.showLoading;
         this.itemService.showMessage(`Erro na atualização do item '${this.formUpdateControls.tarefa.value}'`, true)
       });
     }

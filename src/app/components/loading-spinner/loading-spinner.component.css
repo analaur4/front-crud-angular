@@ -1,0 +1,24 @@
+.circle {
+    animation: rotation 1s linear infinite; /* linear : Especifica uma animação com a mesma velocidade do início ao fim */
+    border: 3px solid #F411A8;
+    border-radius: 50%;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    height: 250px;
+    width: 250px;
+}
+
+span {
+    color: #F411A8;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20pt;
+    text-transform: lowercase;
+    position: absolute
+}
+
+@keyframes rotation {
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -15,9 +15,12 @@ export class TodoCreateComponent implements OnInit {
   formCreate: FormGroup;
   submitted: boolean = false;
 
+  showLoading: boolean = true;
+
   constructor(private router: Router, private itemService: ItemService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.showLoading = !this.showLoading;
     this.formCreate = this.formBuilder.group({
       materia: ['', Validators.required],
       tarefa: ['', Validators.required],
@@ -34,12 +37,14 @@ export class TodoCreateComponent implements OnInit {
     
     if(this.formCreate.valid) {
       this.itemService.createItem(this.formCreate.value).subscribe(() => {
+        this.showLoading = !this.showLoading;
         this.itemService.showMessage('Item criado com sucesso!');
         this.router.navigate(['/todo']);
   
       }, respError => {
+        this.showLoading = !this.showLoading;
         this.itemService.showMessage('Erro na criação!', true);
-        
+  
       });
     }
   }

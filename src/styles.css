@@ -11,6 +11,10 @@ body {
     width: 100%;
 }
 
+.content {
+    position: relative;
+}
+
 .msg-error {
     background-color: #FF0000;
     background-image: url('./assets/img/erro.png');
@@ -52,4 +56,14 @@ body {
     color: #ff1f1f;
     font-weight: bold;
     font-size: 9pt;
+}
+
+app-loading-spinner {
+    align-items: center;
+    background-color: #0000005c;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
 }

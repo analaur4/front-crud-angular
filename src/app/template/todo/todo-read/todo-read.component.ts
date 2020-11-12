@@ -1,7 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Item } from 'src/app/models/item.model';
 import { ItemService } from 'src/app/services/item.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-todo-read',
@@ -16,14 +15,18 @@ export class TodoReadComponent implements OnInit {
 
   itemRemovido: Item;
 
+  showLoading: boolean = false;
+
   constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
+    this.showLoading = !this.showLoading;
     this.readItems();
   }
 
   private readItems() {
     this.itemService.getItems().subscribe(items => {
+      this.showLoading = !this.showLoading;
       this.listItems = items;
       if (items == null) {
         this.result = true;
@@ -40,6 +43,8 @@ export class TodoReadComponent implements OnInit {
 
     if (search == '') {
       this.readItems();
+      this.showLoading = !this.showLoading;
+      
     } else {
       if (!search) {
         return;
@@ -59,8 +64,10 @@ export class TodoReadComponent implements OnInit {
   }
 
   deleteToDo(itemRmv: Item) {
+    this.showLoading = !this.showLoading;
     this.itemRemovido = itemRmv;
     this.itemService.deleteItem(this.itemRemovido.id).subscribe(() => {
+      this.showLoading = !this.showLoading;
       this.itemService.showMessage('Item deletado com sucesso!');
       this.listItems = this.listItems.filter(item => item !== this.itemRemovido)
     }, respError => {

@@ -2,7 +2,7 @@
 
     <h1>• Editar tarefa •</h1>
 
-    <form *ngIf="formUpdate" [formGroup]="formUpdate" (ngSubmit)="updateToDo()">
+    <form [formGroup]="formUpdate" (ngSubmit)="updateToDo()">
         <div class="form-input">
             <label for="materia">Matéria:</label>
             <input type="text" name="materia" id="idMateria" formControlName="materia">
@@ -31,4 +31,6 @@
             <button class="button-style btn-cancel" (click)="cancel()">Cancelar</button>
         </div>
     </form>
+
+    <app-loading-spinner *ngIf="showLoading"></app-loading-spinner>
 </div>
