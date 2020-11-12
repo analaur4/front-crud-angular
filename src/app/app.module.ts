@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './template/home/home.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { AppRoutingModule } from './app.routing';
 import { TodoReadComponent } from './template/todo/todo-read/todo-read.component';
 import { TodoCreateComponent } from './template/todo/todo-create/todo-create.component';
@@ -22,7 +21,6 @@ import { TodoUpdateComponent } from './template/todo/todo-update/todo-update.com
     HeaderComponent,
     NavComponent,
     HomeComponent,
-    FooterComponent,
     TodoReadComponent,
     TodoCreateComponent,
     NotFoundComponent,
@@ -34,7 +32,8 @@ import { TodoUpdateComponent } from './template/todo/todo-update/todo-update.com
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

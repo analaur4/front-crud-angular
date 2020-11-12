@@ -7,6 +7,49 @@ html {
 body {
     font-family: 'Montserrat';
     margin: 0;
-    min-height: 100%;
-    min-width: 100%;
+    height: 100%;
+    width: 100%;
+}
+
+.msg-error {
+    background-color: #FF0000;
+    background-image: url('./assets/img/erro.png');
+    background-position: 90% center;
+    background-repeat: no-repeat;
+    color: #FFF;
+}
+
+.msg-success {
+    background-color: #01830A;
+    background-image: url('./assets/img/sucesso.png');
+    background-position: 90% center;
+    background-repeat: no-repeat;
+    color: #FFF;
+}
+
+.button-style {
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 12pt;
+    font-weight: bold;
+    height: 30px;
+    margin-right: 20px;
+    outline: none;
+    width: 120px;
+}
+
+.btn-save {
+    background-color: #F411A8;
+}
+
+.btn-cancel {
+    background-color: #ff1f1f;
+}
+
+.field-invalid {
+    color: #ff1f1f;
+    font-weight: bold;
+    font-size: 9pt;
 }

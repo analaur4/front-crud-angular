@@ -2,25 +2,28 @@
 
     <h1>• Criar nova tarefa •</h1>
 
-    <form>
+    <form [formGroup]="formCreate" (ngSubmit)="createToDo()">
         <div class="form-input">
             <label for="materia">Matéria:</label>
-            <input type="text" name="materia" id="idMateria" [(ngModel)]="item.materia">
+            <input type="text" name="materia" id="idMateria" formControlName="materia" required>
+            <span class="field-invalid" *ngIf="submitted && formCreateControls.materia.invalid">* O campo <i>Matéria</i> é obrigatório</span>
         </div>
 
         <div class="form-input">
             <label for="tarefa">Tarefa:</label>
-            <input type="text" name="tarefa" id="idTarefa" [(ngModel)]="item.tarefa">
+            <input type="text" name="tarefa" id="idTarefa" formControlName="tarefa" required>
+            <span class="field-invalid" *ngIf="submitted && formCreateControls.tarefa.invalid">* O campo <i>Tarefa</i> é obrigatório</span>
         </div>
         
         <div class="form-input">
             <label for="dtEntrega">Data de Entrega:</label>
-            <input type="date" name="dtEntrega" id="idDtEntrega" [(ngModel)]="item.dtEntrega">
+            <input type="date" name="dtEntrega" id="idDtEntrega" formControlName="dtEntrega" required>
+            <span class="field-invalid" *ngIf="submitted && formCreateControls.dtEntrega.invalid">* O campo <i>Data de Entrega</i> é obrigatório</span>
         </div>
 
         <div class="buttons">
-            <button class="btn-save" (click)="createToDo()">Salvar</button>
-            <button class="btn-cancel" (click)="cancel()">Cancelar</button>
+            <button class="button-style btn-save" type="submit">Salvar</button>
+            <button class="button-style btn-cancel" (click)="cancel()">Cancelar</button>
         </div>
     </form>
 

@@ -2,30 +2,33 @@
 
     <h1>• Editar tarefa •</h1>
 
-    <form>
+    <form *ngIf="formUpdate" [formGroup]="formUpdate" (ngSubmit)="updateToDo()">
         <div class="form-input">
             <label for="materia">Matéria:</label>
-            <input type="text" name="materia" id="idMateria" [(ngModel)]="listItem.materia">
+            <input type="text" name="materia" id="idMateria" formControlName="materia">
+            <span class="field-invalid" *ngIf="submitted && formUpdateControls.materia.invalid">* O campo <i>Matéria</i> é obrigatório</span>
         </div>
 
         <div class="form-input">
             <label for="tarefa">Tarefa:</label>
-            <input type="text" name="tarefa" id="idTarefa" [(ngModel)]="listItem.tarefa">
+            <input type="text" name="tarefa" id="idTarefa" formControlName="tarefa">
+            <span class="field-invalid" *ngIf="submitted && formUpdateControls.tarefa.invalid">* O campo <i>Tarefa</i> é obrigatório</span>
         </div>
         
         <div class="form-input">
             <label for="dtEntrega">Data de Entrega:</label>
-            <input type="date" name="dtEntrega" id="idDtEntrega" [(ngModel)]="listItem.dtEntrega">
+            <input type="date" name="dtEntrega" id="idDtEntrega" formControlName="dtEntrega">
+            <span class="field-invalid" *ngIf="submitted && formUpdateControls.dtEntrega.invalid">* O campo <i>Data de Entrega</i> é obrigatório</span>
         </div>
         
         <div class="form-input">
             <label for="status">Status:</label>
-            <input type="checkbox" name="status" id="idStatus" [(ngModel)]="listItem.status" [checked]="listItem.status">
+            <input type="checkbox" name="status" id="idStatus" formControlName="status" [checked]="formUpdateControls.status">
         </div>
 
         <div class="buttons">
-            <button class="btn-save" (click)="updateToDo()">Atualizar</button>
-            <button class="btn-cancel" (click)="cancel()">Cancelar</button>
+            <button class="button-style btn-save" type="submit">Atualizar</button>
+            <button class="button-style btn-cancel" (click)="cancel()">Cancelar</button>
         </div>
     </form>
 </div>

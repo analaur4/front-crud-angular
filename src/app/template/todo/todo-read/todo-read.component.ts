@@ -16,7 +16,7 @@ export class TodoReadComponent implements OnInit {
 
   itemRemovido: Item;
 
-  constructor(private itemService: ItemService, private route: ActivatedRoute) { }
+  constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
     this.readItems();
@@ -31,7 +31,7 @@ export class TodoReadComponent implements OnInit {
         this.result = false;
       }
     }, respError => {
-      console.log(respError);
+      this.itemService.showMessage('Erro ao carregar informações.', true);
     })
   }
 
@@ -64,7 +64,7 @@ export class TodoReadComponent implements OnInit {
       this.itemService.showMessage('Item deletado com sucesso!');
       this.listItems = this.listItems.filter(item => item !== this.itemRemovido)
     }, respError => {
-      this.itemService.showMessage(`Erro ao excluir item`, true)
+      this.itemService.showMessage(`Erro ao excluir item!`, true)
     })
   }
 }

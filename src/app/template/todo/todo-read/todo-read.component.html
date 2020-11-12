@@ -1,7 +1,7 @@
 <div class="content">
     <div class="top-page">
         <div class="new-todo">
-            <a routerLink="/todo/create">+ Adicionar nova tarefa</a>
+            <a [routerLink]="['/todo/create']">+ Adicionar nova tarefa</a>
         </div>
 
         <div class="filter">
@@ -34,5 +34,8 @@
         </tbody>
     </table>
 
-    <span *ngIf="result">Nenhum resultado encontrado</span>
+    <div class="not-found-result" *ngIf="result">
+        <img src="../../../../assets/img/warning.png" alt="Icon warning">
+        <span>Nenhum resultado encontrado!</span>
+    </div>
 </div>

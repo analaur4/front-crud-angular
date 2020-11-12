@@ -24,7 +24,7 @@ export class ItemService {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) { }
 
   showMessage(msg: string, isError: boolean = false): void {
-    this.snackBar.open(msg, 'X', {
+    this.snackBar.open(msg, '', {
       duration: 3000,
       horizontalPosition: "right",
       verticalPosition: "top",
@@ -51,13 +51,13 @@ export class ItemService {
     return this.http.put<Item>(`${this.baseUrl}/id/${item.id}`, item, this.httpOptions).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
-    )
+    );
   }
-
+    
   createItem(item: Item): Observable<Item> {
-    let objToSave = JSON.stringify(item);
-    return this.http.post<Item>(this.baseUrl, objToSave, this.httpOptions).pipe(
-      map(obj => obj)
+    return this.http.post<Item>(this.baseUrl, item, this.httpOptions).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandler(e))
     );
   }
 

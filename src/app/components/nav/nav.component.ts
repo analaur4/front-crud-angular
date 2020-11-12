@@ -23,7 +23,7 @@ export class NavComponent implements OnInit {
     this.activeHome = true;
     this.activeList = false;
 
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 
   navegaList() {
@@ -34,7 +34,7 @@ export class NavComponent implements OnInit {
   }
 
   private setMenu(href: string) {
-    if(href.includes('home') || href.includes('')) {
+    if(href.includes('')) {
       this.navegaHome();
 
     } else if(href.includes('todo')) {
