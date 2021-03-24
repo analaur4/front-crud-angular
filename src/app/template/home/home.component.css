@@ -70,3 +70,9 @@
     margin: 0 10px;
     width: 50px;
 }
+
+@media screen and (max-width: 900px) {
+    .apresentation {
+        width: 90%;
+    }
+}

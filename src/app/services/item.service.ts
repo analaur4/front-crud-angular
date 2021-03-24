@@ -11,6 +11,7 @@ import { map, catchError } from 'rxjs/operators';
 export class ItemService {
 
   baseUrl: string = 'https://apirest-todolist.herokuapp.com/api/item';
+  // baseUrl: string = 'http://localhost:8080/item';
 
   httpOptions = {
     headers: new HttpHeaders({ 
@@ -44,11 +45,11 @@ export class ItemService {
   }
 
   getItem(id: number): Observable<Item> {
-    return this.http.get<Item>(`${this.baseUrl}/id/${id}`, this.httpOptions);
+    return this.http.get<Item>(`${this.baseUrl}/${id}`, this.httpOptions);
   }
 
   updateItem(item: Item): Observable<Item> {
-    return this.http.put<Item>(`${this.baseUrl}/id/${item.id}`, item, this.httpOptions).pipe(
+    return this.http.put<Item>(`${this.baseUrl}/${item.id}`, item, this.httpOptions).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     );
@@ -62,7 +63,7 @@ export class ItemService {
   }
 
   deleteItem(id: number): Observable<Item> {
-    return this.http.delete<Item>(`${this.baseUrl}/id/${id}`, this.httpOptions).pipe(
+    return this.http.delete<Item>(`${this.baseUrl}/${id}`, this.httpOptions).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     );

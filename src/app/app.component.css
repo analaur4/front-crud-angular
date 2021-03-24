@@ -18,3 +18,11 @@
 .router-outlet {
     grid-area: router-outlet;
 }
+
+@media screen and (max-width: 900px) {
+    .app-component {
+        grid-template-areas: 'header' 'nav' 'router-outlet';
+        grid-template-columns: 100%;
+        grid-template-rows: 10% 10% 80%;
+    }
+}

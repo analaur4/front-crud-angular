@@ -34,6 +34,7 @@ export class TodoReadComponent implements OnInit {
         this.result = false;
       }
     }, respError => {
+      this.showLoading = !this.showLoading;
       this.itemService.showMessage('Erro ao carregar informações.', true);
     })
   }

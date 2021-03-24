@@ -26,3 +26,17 @@ nav {
     background-color: rgb(234, 96, 188);
     width: 100%;
 }
+
+@media screen and (max-width: 900px) {
+    nav {
+        display: grid;
+        grid-template-columns: repeat(2, 200px);
+        flex-direction: row;
+        gap: 15px;
+    }
+    
+    .menu {
+        display: flex;
+    }
+
+}
